@@ -80,7 +80,7 @@ class App extends React.Component {
 
                     {this.state.buttonToggle ? (
                         <div>
-                            <input className="pa2 br2 bn" onChange={this.onChangeInput} type="text" name="timerInput" id="timerInput" placeholder="Enter date" value={this.state.input} />
+                            <input className="pa2 br2 bn" onChange={this.onChangeInput} type="text" name="timerInput" id="timerInput" placeholder="Ex. 26 may 2022" value={this.state.input} />
                             <button className="ml3 bn br3 pa2 fw5 bg-light-green" onClick={() => this.setTimer()}>
                                 {"Start Countdown"}
                             </button>
