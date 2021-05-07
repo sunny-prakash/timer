@@ -23,7 +23,6 @@ class App extends React.Component {
         let showMsg = localStorage.getItem("showInput") !== null ? JSON.parse(localStorage.getItem("showInput")) : "";
         let buttonShow = localStorage.getItem("buttonToggle") !== null ? JSON.parse(localStorage.getItem("buttonToggle")) : "";
         this.setState({ countDownDate: userTime, showInput: showMsg, buttonToggle: buttonShow });
-        // console.log("inside did mount");
         if (this.state.countDownDate !== null && this.state.countDownDate !== "") this.countDownStart();
     }
 
@@ -40,8 +39,6 @@ class App extends React.Component {
         await this.setState({ buttonToggle: false, showInput: this.state.input, countDownDate: date, input: "" });
 
         if (isNaN(this.state.countDownDate)) {
-            console.log("its null");
-            this.setState({ msg: "Invalid date type" });
             this.resetTimer();
             return;
         }
@@ -49,7 +46,6 @@ class App extends React.Component {
     };
 
     countDownStart = () => {
-        // console.log("distance");
         if (this.state.countDownDate === "" || this.state.countDownDate === null) {
             return;
         }
@@ -58,7 +54,7 @@ class App extends React.Component {
             var distance = this.state.countDownDate - presentTime;
             if (isNaN(distance)) return;
             distance <= 0
-                ? this.setState({ msg: "Time has already ended on" })
+                ? this.setState({ msg: "Invalid date type or Time has already ended on" })
                 : this.setState({
                       msg: "Timer ends on",
                       days: Math.floor(distance / (1000 * 60 * 60 * 24)),
